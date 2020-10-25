@@ -1,0 +1,1362 @@
+{
+	"info": {
+		"_postman_id": "f821f31d-ce75-4f33-8d5f-ee2233153a5b",
+		"name": "coffee-shop-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "get_users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "51d37ce8-e95f-413f-8b95-6505b8b14f7a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ca93a98-319b-49ac-aafe-b6624204b831",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"john.doe2@gmail.com\",\r\n  \"user_metadata\": {},\r\n  \"blocked\": false,\r\n  \"email_verified\": true,\r\n  \"app_metadata\": {},\r\n  \"given_name\": \"John\",\r\n  \"family_name\": \"Doe\",\r\n  \"name\": \"John Doe\",\r\n  \"nickname\": \"Johnny\",\r\n  \"picture\": \"https://secure.gravatar.com/avatar/15626c5e0c749cb912f9d1ad48dba440?s=480&r=pg&d=https%3A%2F%2Fssl.gstatic.com%2Fs2%2Fprofiles%2Fimages%2Fsilhouette80.png\",\r\n  \"user_id\": \"abc\",\r\n  \"connection\": \"coffeeshop\",\r\n  \"password\": \"5626cofWQEQASDshopc5e0c74\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aaaa0db2-b4e9-4b33-ba3b-1094c9a9401b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/abc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"abc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc08e4bc-2e1e-44c3-9e50-74d188b39ec5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"TestPatchMethod\",\r\n  \"connection\": \"coffeeshop\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/abc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"abc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0628b896-2fb9-4701-aee1-9ff45eab479c",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ADMIN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/users/abc",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"abc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Drinks",
+			"item": [
+				{
+					"name": "Get Drinks",
+					"item": [
+						{
+							"name": "get_drinks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_drinks_detail",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks-detail",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks-detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_drinks_detail_401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "45c10a7a-0277-4ec1-8cff-24eb96ed888f",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "bad token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks-detail",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks-detail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_drinks_detail_403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0d9069a6-c0e0-467b-a874-2d8264d31e51",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Guest_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks-detail",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks-detail"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b9d61c4e-7ca0-413f-ae51-54e96a76f998",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf490a19-292c-4f5d-9fd3-95637b773b7b",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":[],\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cff09c18-c3be-4b8e-850e-80aca1976109",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b40f1102-2f75-4b48-8caa-5353264d820d",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BARISTA}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "923d674f-91ce-40a5-a98e-f6bb1e9d6b4a",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1000",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "81510087-83be-4e31-b60a-0a42700800b4",
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6f3cc116-5c75-4295-bf45-c6dcf7afcd36",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d7288e19-bde4-41bf-8a64-a4ef41bc8144",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d77aaa8e-b34b-4f1a-af0e-88b7a868cdc7",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Guest_Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "875bfeda-6701-447f-a3cd-f1b8ad25904d",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"new Title\",\r\n    \"recipe\":[{\"name\": \"Test6\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test25\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks/1000",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks",
+										"1000"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "200",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2b256378-c6aa-4b20-8966-1b5e7d689d0f",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"testCoffee\",\r\n    \"recipe\":[{\"name\": \"Test1\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test2\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3651358-f4b9-4811-a4ec-d58d19637d3e",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":[],\r\n    \"recipe\":[{\"name\": \"Test1\", \"color\": \"black\", \"parts\": 2}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b967df3f-019e-4f5b-b8e9-3abd3d7f648b",
+										"exec": [
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"testCoffee23\",\r\n    \"recipe\":[{\"name\": \"Test1\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test2\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "403",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "23d8a0c6-9a48-44e2-8bce-415567d91eb8",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BARISTA}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"testCoffee\",\r\n    \"recipe\":[{\"name\": \"Test1\", \"color\": \"black\", \"parts\": 2}, {\"name\": \"Test2\", \"color\": \"Red\", \"parts\": 1}]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "422",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "468bc008-ba02-4cb5-927c-1a23637aff3e",
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{MANAGER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"New\",\r\n    \"recipe\":{\"name\": \"Test1\", \"color\": \"black\", \"parts\": 2}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:5000/drinks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "5000",
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{Barista}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "bf31f695-02d4-4daa-bf35-a31f66bf3b0d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dd5feb08-30cc-4dab-a67f-83c2364646bb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b35a6e6d-e80f-4ffe-bd69-3cd20c875b40",
+			"key": "MY_DOMAIN",
+			"value": "urokai-auth.us.auth0.com"
+		},
+		{
+			"id": "39338adc-cb13-400b-ae7e-2a65fa94a739",
+			"key": "CLIENT_ID",
+			"value": "vrr3RaMJu2mOItxKTvB2tpqCbOw74z6W"
+		},
+		{
+			"id": "47fd9789-3074-45cb-b757-9356f9e6e58a",
+			"key": "Guest_Token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilpld2NtVjNtcTFiTnlMeGRmZ2lLXyJ9.eyJpc3MiOiJodHRwczovL3Vyb2thaS1hdXRoLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJLeHpCckp2N3Z2NGt2Z2F5NktWUTgzZmJMeWcwN1A0MUBjbGllbnRzIiwiYXVkIjoiY29mZmVlc2hvcCIsImlhdCI6MTYwMzUzMDMyMywiZXhwIjoxNjAzNjE2NzIzLCJhenAiOiJLeHpCckp2N3Z2NGt2Z2F5NktWUTgzZmJMeWcwN1A0MSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsInBlcm1pc3Npb25zIjpbXX0.tJ_GHLGVBwALuq9afGK49lyxzwnunTlhlJuJ3jpxIECc6qujgwK_-xZaNVjWlcUG2jjclWX2Z0kKa8tsZlcXMjaQqyfYZJIxptpgfzTIVwosjbixxtRghMkoipnTITHav6wkaPChZbxwqARtGlydKDXrTkMS_PxnrEbCzjVE6ASjBUG9pFnvXARZwu8WeHMcouNa1v-6m_J6tYZrrwpX-xIzKm3r3f79FDk4Jn4z_QA2dM0Mh4TLNjETcn2-_hQSlpCg4ofzMAgCoqIFfZPKaPWwJ2n2w2NDMfkBh23--OCKqE7UzPQNnYai9RGnNGnY5HbwURZZtV8DBAlcgbVevg"
+		},
+		{
+			"id": "361bf1a3-254f-41ff-9621-4cafd21f364d",
+			"key": "ADMIN",
+			"value": ""
+		},
+		{
+			"id": "61bf7d41-0848-4f51-a6dd-8cec790765da",
+			"key": "MANAGER",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilpld2NtVjNtcTFiTnlMeGRmZ2lLXyJ9.eyJpc3MiOiJodHRwczovL3Vyb2thaS1hdXRoLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjkxOWQ0OWM1ZjExZDAwNmVkZjVmOWYiLCJhdWQiOiJjb2ZmZWVzaG9wIiwiaWF0IjoxNjAzNTI4NzUwLCJleHAiOjE2MDM2MTUxNTAsImF6cCI6InZycjNSYU1KdTJtT0l0eEtUdkIydHBxQ2JPdzc0ejZXIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.XAiOYuDPdmG14gVQYgH0n8Zh1pcR_IkkjGRQVu7aAuKHt5N1PaUMnNoph0mBhijG6Kz4U05oXW_lcIQUf-ptCFOhpEZZSqxEUMa-PZYJSlgte_r6hW920Vq_Pp5RpV8dYH4W1MDaTvrirxM1WyxjaFs1524JUSToXu_QdIQhhiJF6oXd5no4hr36TfFZENPqIHsHjQWvmetKnVSI0kogutDgRAigFcEeZMsN-cq2gQnT8wSh_atudNFDgGabKG4dmk8IQAaMCdyn3d-MeSUKohV2tn8BMXyCq5qSeb7zRm4vRDyGIffTpNP2APrZb_savtuxiP_otmrpgZYUCr451g"
+		},
+		{
+			"id": "27eb7c19-2cfe-4025-aabc-23e083fb5a5e",
+			"key": "BARISTA",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilpld2NtVjNtcTFiTnlMeGRmZ2lLXyJ9.eyJpc3MiOiJodHRwczovL3Vyb2thaS1hdXRoLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjkxOWQyNmY5OTIyZTAwNmFiNjI2NjMiLCJhdWQiOiJjb2ZmZWVzaG9wIiwiaWF0IjoxNjAzNTI4MjQ1LCJleHAiOjE2MDM2MTQ2NDUsImF6cCI6InZycjNSYU1KdTJtT0l0eEtUdkIydHBxQ2JPdzc0ejZXIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiXX0.K4IAGjgBSyyEHU7Sxz1CICBNcQ8JfJzRKdigKGkjlktx_kxPygKIvD31yYW5kdjWqJua8zIZ-UcgPKDB9qWmEyAl4Z9KOKdip2FtQXIaAIfaZvhOE83XJvDI1_OWmxf3DQ3kyppMFatAZaV4NmOTKciu69uP4vRH3yG82IIGWqGF6jrHEhYHkEHyxufAka5XgNwS1PKTvYUp5m2OjPSDlwKdY0_Hr_oYH6rDmCMofydFYLZc-3Oc4kgVoc6E6_MdVmk_vRPYV2ZITc5uVUQuY56mKGwJmmQq6d8nixMqtF4m2A2yIinR7eysUXeu-Cd5PgupF3ug4Pk39lhGw5Rvgw"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
