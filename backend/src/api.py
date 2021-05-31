@@ -94,7 +94,16 @@ def create_drink(token):
     except:
         abort(400, "something went wrong please make sure you are authenticated and entering valid data")
 
-
+@app.errorhandler(405)
+def method_not_allowed(error):
+    if not error:
+        error.description = "METHOD NOT ALLOWED"
+    return jsonify({
+        "success": False,
+        "error": 405,
+        "message": error.description
+    }), 405
+    
 '''
 @DONE implement endpoint
     PATCH /drinks/<id>
@@ -166,8 +175,10 @@ def delete_drink(token, drink_id):
 def get_users(decoded_token):
     token = request.headers["Authorization"]
 
-    res = requests.get(f"https://{AUTH0_DOMAIN}/api/v2/users",
-                       headers={"Authorization": token})
+    res = requests.get(
+        f"https://{AUTH0_DOMAIN}/api/v2/users",
+        headers={"Authorization": token}
+        )
     return res.text
 
 

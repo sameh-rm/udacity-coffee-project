@@ -1,33 +1,83 @@
-astroid==2.2.5
-autopep8==1.5.4
-certifi==2020.6.20
-chardet==3.0.4
-Click==7.0
-colorama==0.4.4
-ecdsa==0.13.2
-Flask==1.0.2
-Flask-Cors==3.0.8
-Flask-SQLAlchemy==2.4.0
-future==0.17.1
-idna==2.10
-isort==4.3.18
-itsdangerous==1.1.0
-Jinja2==2.10.1
-lazy-object-proxy==1.4.0
-MarkupSafe==1.1.1
-mccabe==0.6.1
-pyasn1==0.4.8
-pycodestyle==2.6.0
-pycryptodome==3.3.1
-pylint==2.3.1
-python-jose==3.2.0
-python-jose-cryptodome==1.3.2
-requests==2.24.0
-rsa==4.6
-six==1.12.0
-SQLAlchemy==1.3.3
-toml==0.10.1
-typed-ast==1.3.5
-urllib3==1.25.11
-Werkzeug==0.15.2
-wrapt==1.11.1
+# Coffee Shop Backend
+
+## Getting Started
+
+### Installing Dependencies
+
+#### Python 3.7
+
+Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
+
+#### Virtual Enviornment
+
+We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organaized. Instructions for setting up a virual enviornment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+
+#### PIP Dependencies
+
+Once you have your virtual environment setup and running, install dependencies by naviging to the `/backend` directory and running:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install all of the required packages we selected within the `requirements.txt` file.
+
+##### Key Dependencies
+
+- [Flask](http://flask.pocoo.org/)  is a lightweight backend microservices framework. Flask is required to handle requests and responses.
+- [SQLAlchemy](https://www.sqlalchemy.org/) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) are libraries to handle the lightweight sqlite database. Since we want you to focus on auth, we handle the heavy lift for you in `./src/database/models.py`. We recommend skimming this code first so you know how to interface with the Drink model.
+- [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
+
+## Running the server
+
+From within the `./src` directory first ensure you are working using your created virtual environment.
+
+Each time you open a new terminal session, run:
+
+```bash
+export FLASK_APP=api.py;
+```
+
+To run the server, execute:
+
+```bash
+flask run --reload
+```
+
+The `--reload` flag will detect file changes and restart the server automatically.
+
+## Tasks
+
+### Setup Auth0
+
+1. Create a new Auth0 Account
+2. Select a unique tenant domain
+3. Create a new, single page web application
+4. Create a new API
+   - in API Settings:
+     - Enable RBAC
+     - Enable Add Permissions in the Access Token
+5. Create new API permissions:
+   - `get:drinks-detail`
+   - `post:drinks`
+   - `patch:drinks`
+   - `delete:drinks`
+6. Create new roles for:
+   - Barista
+     - can `get:drinks-detail`
+   - Manager
+     - can perform all actions
+7. Test your endpoints with [Postman](https://getpostman.com).
+   - Register 2 users - assign the Barista role to one and Manager role to the other.
+   - Sign into each account and make note of the JWT.
+   - Import the postman collection `./starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json`
+   - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
+   - Run the collection and correct any errors.
+   - Export the collection overwriting the one we've included so that we have your proper JWTs during review!
+
+### Implement The Server
+
+There are `@TODO` comments throughout the `./backend/src`. We recommend tackling the files in order and from top to bottom:
+
+1. `./src/auth/auth.py`
+2. `./src/api.py`
